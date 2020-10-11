@@ -4,6 +4,7 @@
   "description": "Typescript Koa Starter",
   "scripts": {
     "dev": "nodemon -e ts --exec ts-node src",
+    "start": "node dist/",
     "build": "tsc",
     "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src/",
     "test": "jest"
