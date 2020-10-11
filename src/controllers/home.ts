@@ -2,20 +2,14 @@ import { Context } from 'koa';
 
 import { HomeService } from '../services/home';
 
-interface Options {
-  homeService: HomeService
-}
-
 export class HomeController {
-  service: { home: HomeService }
+  // eslint-disable-next-line no-useless-constructor
+  constructor(
+    public homeService: HomeService,
+  ) {}
 
-  constructor({ homeService }: Options) {
-    this.service = { home: homeService };
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  get(ctx: Context): void {
-    ctx.body = this.service.home.get();
+  get = (ctx: Context): void => {
+    ctx.body = this.homeService.get();
   }
 }
 

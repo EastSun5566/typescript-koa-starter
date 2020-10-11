@@ -13,7 +13,7 @@ export const routes: Route[] = [
   {
     path: '/',
     method: 'get',
-    handler: new HomeController({ homeService: new HomeService() }).get,
+    handler: new HomeController(new HomeService()).get,
   },
 ];
 
