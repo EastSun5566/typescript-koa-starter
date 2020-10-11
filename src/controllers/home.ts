@@ -13,7 +13,8 @@ export class HomeController {
     this.service = { home: homeService };
   }
 
-  async get(ctx: Context): Promise<void> {
+  // eslint-disable-next-line class-methods-use-this
+  get(ctx: Context): void {
     ctx.body = this.service.home.get();
   }
 }

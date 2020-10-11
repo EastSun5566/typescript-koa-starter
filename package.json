@@ -28,12 +28,14 @@
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-helmet": "^6.0.0",
+    "koa-logger": "^3.2.1",
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
     "@types/koa": "^2.11.4",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-helmet": "^5.2.0",
+    "@types/koa-logger": "^3.1.1",
     "@types/koa-router": "^7.4.1",
     "@types/node": "^12.12.67",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
