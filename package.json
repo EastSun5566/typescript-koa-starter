@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon -e ts --exec ts-node src",
     "build": "tsc",
-    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src/"
+    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src/",
+    "test": "jest"
   },
   "keywords": [
     "Typescript",
@@ -32,6 +33,7 @@
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.14",
     "@types/koa": "^2.11.4",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-helmet": "^5.2.0",
@@ -43,8 +45,10 @@
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.5.2",
     "nodemon": "^1.19.0",
     "pm2": "^3.5.2",
+    "ts-jest": "^26.4.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   }
