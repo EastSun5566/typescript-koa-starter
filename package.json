@@ -1,0 +1,49 @@
+{
+  "name": "typescript-koa-starter",
+  "version": "0.0.0",
+  "description": "Typescript Koa Starter",
+  "scripts": {
+    "dev": "nodemon -e ts --exec ts-node src",
+    "build": "tsc",
+    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src/"
+  },
+  "keywords": [
+    "Typescript",
+    "Koa",
+    "starter"
+  ],
+  "author": "汪東陽 EastSun5566",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EastSun5566/typescript-koa-starter"
+  },
+  "homepage": "https://github.com/EastSun5566/typescript-koa-starter",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-helmet": "^6.0.0",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.11.4",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-helmet": "^5.2.0",
+    "@types/koa-router": "^7.4.1",
+    "@types/node": "^12.12.67",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^1.19.0",
+    "pm2": "^3.5.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
