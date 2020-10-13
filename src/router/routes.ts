@@ -1,5 +1,3 @@
-import { RouterContext as Context } from 'koa-router';
-
 import {
   HomeController,
   BookController,
@@ -8,12 +6,7 @@ import {
   HomeService,
   BookService,
 } from '../services';
-
-interface Route {
-  path: string;
-  method: 'get' | 'post' | 'put' | 'link' | 'unlink' | 'delete' | 'del' | 'head' | 'options' | 'patch' | 'all';
-  handler: (ctx: Context) => any;
-}
+import { Route } from './types';
 
 const homeController = new HomeController(new HomeService());
 const bookController = new BookController(new BookService({}));
