@@ -15,8 +15,10 @@ describe('GET /', () => {
   });
 
   it('should return 200 OK', async () => {
-    await request(app)
+    const res = await request(app)
       .get('/')
       .expect(200);
+
+    expect(res.text).toBe('Hello World');
   });
 });
