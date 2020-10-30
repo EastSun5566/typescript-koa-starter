@@ -15,7 +15,7 @@ interface AppOptions {
 export const createApp = ({ routesPrefix = '/' }: AppOptions = {}): Server => {
   const router = createRouter(new Router({ prefix: routesPrefix }));
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 8080;
 
   const app = new Koa()
     .use(logger())
@@ -24,7 +24,7 @@ export const createApp = ({ routesPrefix = '/' }: AppOptions = {}): Server => {
     .use(router.routes())
     .use(router.allowedMethods())
     .listen(port, () => {
-      console.log(`[HTTP] listening on http://localhost:${port}`);
+      console.info(`[HTTP] listening on http://localhost:${port}${routesPrefix}`);
     });
 
   return app;
