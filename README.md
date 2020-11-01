@@ -7,6 +7,7 @@
 ## Getting started
 
 ```sh
+# install dep
 npm i
 
 # start dev
