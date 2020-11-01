@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "description": "Typescript Koa Starter",
   "scripts": {
-    "dev": "nodemon -e ts --exec ts-node src",
+    "start:dev": "nodemon -e ts --exec ts-node src",
+    "start": "node dist",
+    "start:docker:dev": "docker-compose run --service-ports app npm run start:dev",
+    "start:docker": "docker-compose up",
     "build": "tsc",
     "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src/",
     "test": "jest"
@@ -40,6 +43,7 @@
     "@types/koa-logger": "^3.1.1",
     "@types/koa-router": "^7.4.1",
     "@types/node": "^12.12.67",
+    "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
     "eslint": "^7.10.0",
@@ -48,6 +52,7 @@
     "jest": "^26.5.2",
     "nodemon": "^1.19.0",
     "pm2": "^3.5.2",
+    "supertest": "^5.0.0",
     "ts-jest": "^26.4.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"

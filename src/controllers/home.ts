@@ -1,15 +1,19 @@
 import { Context } from 'koa';
 
-import { HomeService } from '../services/home';
+import { IHomeService } from '../services/home';
 
-export class HomeController {
+interface IHomeController {
+  get(ctx: Context): void;
+}
+
+export class HomeController implements IHomeController {
   // eslint-disable-next-line no-useless-constructor
   constructor(
-    public homeService: HomeService,
+    private readonly homeService: IHomeService,
   ) {}
 
   get = (ctx: Context): void => {
-    ctx.body = this.homeService.get();
+    ctx.body = this.homeService.greet();
   }
 }
 
