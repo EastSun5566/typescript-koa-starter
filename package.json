@@ -5,7 +5,7 @@
   "scripts": {
     "start:dev": "nodemon -e ts --exec ts-node src",
     "start": "node dist",
-    "start:docker:dev": "docker-compose run app npm run start:dev",
+    "start:docker:dev": "docker-compose run --service-ports app npm run start:dev",
     "start:docker": "docker-compose up",
     "build": "tsc",
     "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src/",
