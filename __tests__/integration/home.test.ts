@@ -6,11 +6,11 @@ import { createApp } from '../../src/app';
 describe('GET /', () => {
   let app: Server;
 
-  beforeEach(() => {
+  beforeAll(() => {
     app = createApp();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     app.close();
   });
 
