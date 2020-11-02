@@ -7,7 +7,7 @@ import helmet from 'koa-helmet';
 import bodyParser from 'koa-bodyparser';
 
 import { createRouter } from './router';
-import { handleErrors } from './middlewares';
+import { errorHandler } from './middlewares';
 
 interface AppOptions {
   routesPrefix?: string
@@ -22,9 +22,9 @@ export const createApp = ({ routesPrefix = '' }: AppOptions = {}): Server => {
     .use(logger())
     .use(helmet())
     .use(bodyParser())
+    .use(errorHandler)
     .use(router.routes())
     .use(router.allowedMethods())
-    .use(handleErrors)
     .listen(port, () => {
       console.info(`[HTTP] listening on http://localhost:${port}${routesPrefix}`);
     });

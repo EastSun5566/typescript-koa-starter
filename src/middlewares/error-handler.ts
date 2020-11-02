@@ -1,6 +1,6 @@
 import { IMiddleware } from 'koa-router';
 
-export const handleErrors: IMiddleware = async (ctx, next) => {
+export const errorHandler: IMiddleware = async (ctx, next) => {
   try {
     await next();
   } catch (err) {
@@ -13,4 +13,4 @@ export const handleErrors: IMiddleware = async (ctx, next) => {
   }
 };
 
-export default handleErrors;
+export default errorHandler;
