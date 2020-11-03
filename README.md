@@ -17,8 +17,8 @@ npm run start:dev
 npm start
 
 # start dev with docker
-start:docker:dev
+npm run start:docker:dev
 
 # start prod with docker
-start:docker
+npm run start:docker
 ```
