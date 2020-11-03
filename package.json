@@ -1,7 +1,7 @@
 {
   "name": "typescript-koa-starter",
-  "version": "0.0.0",
-  "description": "Typescript Koa Starter",
+  "version": "1.0.0",
+  "description": "✨ A starter for my TypeScript Koa project",
   "scripts": {
     "start:dev": "nodemon -e ts --exec ts-node src",
     "start": "node dist",
