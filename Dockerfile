@@ -2,11 +2,11 @@ FROM node:12-slim
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json tsconfig.json ./
 RUN npm ci
 
+COPY ./src ./src
 RUN npm run build
-COPY . .
 
 EXPOSE 8080
 
