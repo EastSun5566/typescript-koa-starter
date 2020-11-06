@@ -1,3 +1,3 @@
-import { createApp } from './app';
+import { createServer } from './server';
 
-createApp({ routesPrefix: '/api/v1' });
+createServer({ prefix: '/api/v1' });
