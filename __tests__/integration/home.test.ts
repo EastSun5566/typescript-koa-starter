@@ -1,13 +1,13 @@
 import { Server } from 'http';
 import request from 'supertest';
 
-import { createApp } from '../../src/app';
+import { createServer } from '../../src/server';
 
 describe('GET /', () => {
   let app: Server;
 
   beforeAll(() => {
-    app = createApp();
+    app = createServer();
   });
 
   afterAll(() => {
