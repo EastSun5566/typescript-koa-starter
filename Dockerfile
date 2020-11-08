@@ -1,13 +1,32 @@
-FROM node:12-slim
+# base stage
+FROM node:12-slim as base
 
+ENV TINI_VERSION v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
+EXPOSE 8000
+
+RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm i
+USER node
 
-COPY . .
+COPY --chown=node:node package*.json ./
+RUN npm ci
+COPY --chown=node:node . .
+
+# dev stage
+FROM base as dev
+
+CMD ["npm", "run", "start:dev"]
+
+# prod stage
+FROM source as prod
+
+ENV NODE_ENV=production
+
 RUN npm run build
 
-EXPOSE 8080
-
-CMD [ "npm", "start" ]
+ENTRYPOINT ["/tini", "--"]
+CMD ["node", "dist"]

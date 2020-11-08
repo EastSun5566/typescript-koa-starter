@@ -25,7 +25,7 @@ export const createServer = (options: ServerOptions = {}): Server => {
     .use(router.allowedMethods())
     .listen(port);
 
-  console.info(`[HTTP] listening on http://localhost:${port}${routesPrefix}`);
+  console.info(`[HTTP] listening on http://localhost:${port}${options.prefix}`);
 
   return app;
 };
