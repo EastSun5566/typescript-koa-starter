@@ -9,14 +9,16 @@ import bodyParser from 'koa-bodyparser';
 import { createRouter } from './router';
 import { errorHandler } from './middlewares';
 
-type ServerOptions = IRouterOptions
+interface ServerOptions extends IRouterOptions {
+  port?: number;
+}
 
 export const createServer = (options: ServerOptions = {}): Server => {
   const router = createRouter(new Router(options));
 
-  const port = process.env.PORT || 8080;
+  const port = options.port || process.env.PORT || 8080;
 
-  const app = new Koa()
+  const server = new Koa()
     .use(logger())
     .use(helmet())
     .use(bodyParser())
@@ -25,8 +27,8 @@ export const createServer = (options: ServerOptions = {}): Server => {
     .use(router.allowedMethods())
     .listen(port);
 
-  console.info(`[HTTP] listening on http://localhost:${port}${routesPrefix}`);
+  console.info(`[HTTP] listening on http://localhost:${port}${options.prefix}`);
 
-  return app;
+  return server;
 };
 export default createServer;

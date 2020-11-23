@@ -5,13 +5,13 @@
   "scripts": {
     "start:dev": "nodemon -e ts --exec ts-node src",
     "start": "node dist",
-    "start:docker:dev": "docker-compose run --service-ports app npm run start:dev",
-    "start:docker": "docker-compose up",
+    "start:docker:dev": "docker-compose up --build",
+    "start:docker": "docker-compose -f docker-compose.prod.yml up --build -d",
     "build": "tsc",
     "build:docker": "docker-compose build",
     "test": "jest",
     "test:docker": "docker-compose run app npm test",
-    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src/"
+    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src"
   },
   "keywords": [
     "Typescript",

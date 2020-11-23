@@ -11,6 +11,7 @@ interface createBookDTO {
 }
 
 interface IBookController {
+  list(ctx: Context): Promise<void>;
   get(ctx: Context): Promise<void>;
   create(ctx: Context): Promise<void>;
 }
@@ -20,6 +21,10 @@ export class BookController implements IBookController {
   constructor(
     private readonly BookService: IBookService,
   ) {}
+
+  list = async (ctx: Context): Promise<void> => {
+    ctx.body = await this.BookService.find();
+  }
 
   get = async (ctx: Context): Promise<void> => {
     const { params }: { params: getBookDTO } = ctx;
