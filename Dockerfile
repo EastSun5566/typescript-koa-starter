@@ -25,7 +25,6 @@ CMD ["npm", "run", "start:dev"]
 FROM source as prod
 
 ENV NODE_ENV=production
-
 RUN npm run build
 
 ENTRYPOINT ["/tini", "--"]

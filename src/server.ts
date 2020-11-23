@@ -16,7 +16,7 @@ export const createServer = (options: ServerOptions = {}): Server => {
 
   const port = process.env.PORT || 8080;
 
-  const app = new Koa()
+  const server = new Koa()
     .use(logger())
     .use(helmet())
     .use(bodyParser())
@@ -27,6 +27,6 @@ export const createServer = (options: ServerOptions = {}): Server => {
 
   console.info(`[HTTP] listening on http://localhost:${port}${options.prefix}`);
 
-  return app;
+  return server;
 };
 export default createServer;

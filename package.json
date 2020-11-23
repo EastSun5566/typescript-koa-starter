@@ -8,7 +8,7 @@
     "start:docker:dev": "docker-compose up --build",
     "start:docker": "docker-compose -f docker-compose.prod.yml up --build -d",
     "build": "tsc",
-    "build:docker": "docker-compose build --no-cache",
+    "build:docker": "docker-compose build",
     "test": "jest",
     "test:docker": "docker-compose run app npm test",
     "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src"
