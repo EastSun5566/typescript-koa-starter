@@ -2,7 +2,6 @@ import { Server } from 'http';
 
 import Koa from 'koa';
 import Router, { IRouterOptions } from 'koa-router';
-import logger from 'koa-logger';
 import helmet from 'koa-helmet';
 import bodyParser from 'koa-bodyparser';
 
@@ -19,15 +18,14 @@ export const createServer = (options: ServerOptions = {}): Server => {
   const port = options.port || process.env.PORT || 8080;
 
   const server = new Koa()
-    .use(logger())
     .use(helmet())
     .use(bodyParser())
-    .use(errorHandler)
+    .use(errorHandler())
     .use(router.routes())
     .use(router.allowedMethods())
     .listen(port);
 
-  console.info(`[HTTP] listening on http://localhost:${port}${options.prefix}`);
+  console.info(`[HTTP] listening on http://localhost:${port}${options.prefix || ''}`);
 
   return server;
 };

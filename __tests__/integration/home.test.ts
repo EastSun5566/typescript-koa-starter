@@ -4,18 +4,18 @@ import request from 'supertest';
 import { createServer } from '../../src/server';
 
 describe('GET /', () => {
-  let app: Server;
+  let server: Server;
 
   beforeAll(() => {
-    app = createServer();
+    server = createServer();
   });
 
   afterAll(() => {
-    app.close();
+    server.close();
   });
 
   it('should return 200 OK', async () => {
-    const res = await request(app)
+    const res = await request(server)
       .get('/')
       .expect(200);
 
