@@ -1,19 +1,22 @@
 import { HomeController } from '../../../src/controllers';
 import { IHomeService } from '../../../src/services';
 
-describe.skip('HomeController', () => {
+describe('HomeController', () => {
+  const GREETING = 'Hello';
   let homeController: HomeController;
 
   beforeEach(() => {
     class MockHomeService implements IHomeService {
-      // eslint-disable-next-line class-methods-use-this
-      greet(): string {
-        return 'Hello';
-      }
+      greet = (): string => GREETING
     }
 
     homeController = new HomeController(new MockHomeService());
   });
 
-  it('should be OK', () => 'OK');
+  it(`should get ${GREETING} when get`, () => {
+    const ctx: any = {};
+    homeController.get(ctx);
+
+    expect(ctx).toHaveProperty('body', GREETING);
+  });
 });
