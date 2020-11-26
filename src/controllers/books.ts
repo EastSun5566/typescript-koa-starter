@@ -1,7 +1,7 @@
 import { RouterContext as Context } from 'koa-router';
 
-import { Book } from '../domains/Book';
-import { IBookService } from '../services/book';
+import { Book } from '../domains';
+import { IBookService } from '../services';
 
 interface getBookDTO {
   id: number

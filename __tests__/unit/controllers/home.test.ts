@@ -14,9 +14,9 @@ describe('HomeController', () => {
   });
 
   it(`should get ${GREETING} when get`, () => {
-    const ctx: any = {};
-    homeController.get(ctx);
+    const mockCtx: any = {};
+    homeController.get(mockCtx);
 
-    expect(ctx).toHaveProperty('body', GREETING);
+    expect(mockCtx).toHaveProperty('body', GREETING);
   });
 });
