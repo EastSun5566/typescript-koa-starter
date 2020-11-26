@@ -1,9 +1,9 @@
-import { Context } from 'koa';
+import { IMiddleware } from 'koa-router';
 
 import { IHomeService } from '../services/home';
 
 interface IHomeController {
-  get(ctx: Context): void;
+  get: IMiddleware;
 }
 
 export class HomeController implements IHomeController {
@@ -12,7 +12,7 @@ export class HomeController implements IHomeController {
     private readonly homeService: IHomeService,
   ) {}
 
-  get = (ctx: Context): void => {
+  get: IMiddleware = (ctx): void => {
     ctx.body = this.homeService.greet();
   }
 }
