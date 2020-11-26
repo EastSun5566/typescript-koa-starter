@@ -3,10 +3,10 @@ import { IMiddleware } from 'koa-router';
 import { Book } from '../domains';
 import { IBookService } from '../services';
 
-interface getBookDTO {
+interface GetBookDTO {
   id: number
 }
-interface createBookDTO {
+interface CreateBookDTO {
   name: string;
 }
 
@@ -27,13 +27,13 @@ export class BookController implements IBookController {
   }
 
   get: IMiddleware = async (ctx): Promise<void> => {
-    const { params }: { params: getBookDTO } = ctx;
+    const { params }: { params: GetBookDTO } = ctx;
 
     ctx.body = await this.BookService.findByID(params.id);
   }
 
   create: IMiddleware = async (ctx): Promise<void> => {
-    const { body }: { body?: createBookDTO } = ctx.request;
+    const { body }: { body?: CreateBookDTO } = ctx.request;
     if (!body) throw new Error();
 
     const book = new Book({ name: body.name });
