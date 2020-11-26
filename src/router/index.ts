@@ -27,12 +27,12 @@ export const createRouter = (router: Router): Router => {
       handler: bookController.list,
       children: [
         {
-          path: ':id',
+          path: '/:id',
           method: 'get',
           handler: bookController.get,
         },
         {
-          path: '',
+          path: '/',
           method: 'post',
           handler: bookController.create,
         },
