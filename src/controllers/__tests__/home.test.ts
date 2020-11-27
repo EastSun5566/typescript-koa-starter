@@ -1,5 +1,5 @@
-import { HomeController } from '../../../src/controllers';
-import { IHomeService } from '../../../src/services';
+import { HomeController } from '../home';
+import { IHomeService } from '../../services';
 
 describe('HomeController', () => {
   const GREETING = 'Hello';
@@ -14,9 +14,11 @@ describe('HomeController', () => {
   });
 
   it(`should get ${GREETING} when get`, () => {
-    const ctx: any = {};
-    homeController.get(ctx);
+    const mockCtx = {} as any;
+    const mockNest = jest.fn();
 
-    expect(ctx).toHaveProperty('body', GREETING);
+    homeController.get(mockCtx, mockNest);
+
+    expect(mockCtx).toHaveProperty('body', GREETING);
   });
 });

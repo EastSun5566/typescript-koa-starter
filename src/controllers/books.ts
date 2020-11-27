@@ -1,19 +1,19 @@
-import { RouterContext as Context } from 'koa-router';
+import { IMiddleware } from 'koa-router';
 
-import { Book } from '../domains/Book';
-import { IBookService } from '../services/book';
+import { Book } from '../domains';
+import { IBookService } from '../services';
 
-interface getBookDTO {
+interface GetBookDTO {
   id: number
 }
-interface createBookDTO {
+interface CreateBookDTO {
   name: string;
 }
 
 interface IBookController {
-  list(ctx: Context): Promise<void>;
-  get(ctx: Context): Promise<void>;
-  create(ctx: Context): Promise<void>;
+  list: IMiddleware;
+  get: IMiddleware;
+  create: IMiddleware;
 }
 
 export class BookController implements IBookController {
@@ -22,23 +22,21 @@ export class BookController implements IBookController {
     private readonly BookService: IBookService,
   ) {}
 
-  list = async (ctx: Context): Promise<void> => {
+  list: IMiddleware = async (ctx): Promise<void> => {
     ctx.body = await this.BookService.find();
   }
 
-  get = async (ctx: Context): Promise<void> => {
-    const { params }: { params: getBookDTO } = ctx;
+  get: IMiddleware = async (ctx): Promise<void> => {
+    const { params }: { params: GetBookDTO } = ctx;
 
     ctx.body = await this.BookService.findByID(params.id);
   }
 
-  create = async (ctx: Context): Promise<void> => {
-    const { body }: { body?: createBookDTO } = ctx.request;
+  create: IMiddleware = async (ctx): Promise<void> => {
+    const { body }: { body?: CreateBookDTO } = ctx.request;
     if (!body) throw new Error();
 
-    const book = new Book({ name: body.name });
-
-    ctx.body = await this.BookService.create(book);
+    ctx.body = await this.BookService.create(body);
   }
 }
 
