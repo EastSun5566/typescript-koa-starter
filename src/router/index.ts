@@ -13,7 +13,7 @@ import { registerRoute, Route } from './utils';
 
 export const createRouter = (router: Router): Router => {
   const homeController = new HomeController(new HomeService());
-  const bookController = new BookController(new BookService({ book: new BookModel() }));
+  const bookController = new BookController(new BookService({ Book: BookModel }));
 
   const routes: Route[] = [
     {

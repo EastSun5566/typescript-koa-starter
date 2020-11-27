@@ -1,5 +1,5 @@
 import { Book } from '../domains';
-import { IBookModel } from '../models';
+import { BookModel } from '../models';
 
 export interface IBookService {
   find(): Promise<Book[]>;
@@ -10,19 +10,19 @@ export interface IBookService {
 export class BookService implements IBookService {
   // eslint-disable-next-line no-useless-constructor
   constructor(
-    private models: { book: IBookModel },
+    private models: { Book: typeof BookModel },
   ) {}
 
   find(): Promise<Book[]> {
-    return this.models.book.find();
+    return this.models.Book.find();
   }
 
   findByID(id: Book['id']): Promise<Book> {
-    return this.models.book.findByID(id);
+    return this.models.Book.findByID(id);
   }
 
   create(book: Book): Promise<Book> {
-    return this.models.book.create(book);
+    return this.models.Book.create(book);
   }
 }
 

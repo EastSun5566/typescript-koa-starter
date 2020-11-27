@@ -36,8 +36,7 @@ export class BookController implements IBookController {
     const { body }: { body?: CreateBookDTO } = ctx.request;
     if (!body) throw new Error();
 
-    const book = new Book({ name: body.name });
-    ctx.body = await this.BookService.create(book);
+    ctx.body = await this.BookService.create(body);
   }
 }
 
