@@ -1,11 +1,11 @@
 import { IMiddleware } from 'koa-router';
 
-import { Book } from '../domains';
 import { IBookService } from '../services';
 
 interface GetBookDTO {
   id: number
 }
+
 interface CreateBookDTO {
   name: string;
 }
