@@ -1,5 +1,8 @@
 /* eslint-disable class-methods-use-this */
-import { Book } from '../domains';
+export interface Book {
+  id?: number;
+  name?: string;
+}
 
 export class BookModel implements Book {
   id?: number;
@@ -11,18 +14,18 @@ export class BookModel implements Book {
     this.name = name;
   }
 
-  static async find(): Promise<Book[]> {
+  static async find(): Promise<BookModel[]> {
     return Array.from(
       { length: 3 },
       (_, index) => new BookModel({ id: index + 1, name: 'good book' }),
     );
   }
 
-  static async findByID(id: Book['id']): Promise<Book> {
+  static async findByID(id: BookModel['id']): Promise<Book> {
     return new BookModel({ id, name: 'good book' });
   }
 
-  static async create(book: Book): Promise<Book> {
+  static async create(book: Book): Promise<BookModel> {
     return new BookModel(book);
   }
 }

@@ -1,5 +1,4 @@
 import { Server } from 'http';
-
 import Koa from 'koa';
 import Router, { IRouterOptions } from 'koa-router';
 import helmet from 'koa-helmet';
@@ -25,6 +24,7 @@ export const createServer = (options: ServerOptions = {}): Server => {
     .use(router.allowedMethods())
     .listen(port);
 
+  // eslint-disable-next-line no-console
   console.info(`[HTTP] listening on http://localhost:${port}${options.prefix || ''}`);
 
   return server;
