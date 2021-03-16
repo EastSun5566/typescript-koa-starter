@@ -1,5 +1,8 @@
 /* eslint-disable class-methods-use-this */
-import { Book } from '../domains';
+export interface Book {
+  id?: number;
+  name?: string;
+}
 
 export class BookModel implements Book {
   id?: number;

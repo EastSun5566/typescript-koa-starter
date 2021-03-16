@@ -1,5 +1,4 @@
-import { Book } from '../domains';
-import { BookModel } from '../models';
+import { Book, BookModel } from '../models';
 
 export interface IBookService {
   find(): Promise<Book[]>;
