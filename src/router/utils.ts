@@ -1,9 +1,11 @@
-import Router, { IMiddleware } from 'koa-router';
+import Router, { IMiddleware as Middleware } from 'koa-router';
+
+type HTTPMethod = 'get' | 'post' | 'put' | 'link' | 'unlink' | 'delete' | 'del' | 'head' | 'options' | 'patch' | 'all';
 
 export interface Route {
   path: string;
-  method?: 'get' | 'post' | 'put' | 'link' | 'unlink' | 'delete' | 'del' | 'head' | 'options' | 'patch' | 'all';
-  handler?: IMiddleware;
+  method?: HTTPMethod;
+  handler?: Middleware;
   children?: Route[];
 }
 

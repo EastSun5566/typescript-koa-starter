@@ -1,3 +1,5 @@
 import { createServer } from './server';
 
-createServer({ prefix: '/api/v1' });
+createServer({
+  route: { prefix: '/api/v1' },
+});
