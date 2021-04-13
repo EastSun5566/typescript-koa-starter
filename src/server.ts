@@ -9,12 +9,14 @@ import { createRouter } from './router';
 import { errorHandler } from './middlewares';
 import { registerProcessEvents } from './utils';
 
-interface ServerOptions extends RouterOptions {
+interface ServerOptions {
   port?: number;
+  route?: RouterOptions;
 }
 
 export const createServer = (options: ServerOptions = {}): Server => {
-  const router = createRouter(new Router(options));
+  const { route: routeOptions } = options;
+  const router = createRouter(new Router(routeOptions));
 
   const app = new Koa()
     .use(helmet())
@@ -25,7 +27,7 @@ export const createServer = (options: ServerOptions = {}): Server => {
 
   const port = options.port || process.env.PORT || 8080;
   const server = app.listen(port, () => {
-    console.info(`[HTTP] Listening on http://localhost:${port}${options.prefix || ''}`);
+    console.info(`[HTTP] Listening on http://localhost:${port}${routeOptions?.prefix || ''}`);
   });
 
   registerProcessEvents(server);
