@@ -2,11 +2,11 @@
 import { Server } from 'http';
 import Koa from 'koa';
 import Router, { IRouterOptions as RouterOptions } from 'koa-router';
-import helmet from 'koa-helmet';
-import bodyParser from 'koa-bodyparser';
+import createHelmet from 'koa-helmet';
+import createBodyParser from 'koa-bodyparser';
 
 import { createRouter } from './router';
-import { errorHandler } from './middlewares';
+import { createErrorHandler } from './middlewares';
 import { registerProcessEvents } from './utils';
 
 interface ServerOptions {
@@ -19,9 +19,9 @@ export const createServer = (options: ServerOptions = {}): Server => {
   const router = createRouter(new Router(routeOptions));
 
   const app = new Koa()
-    .use(helmet())
-    .use(bodyParser())
-    .use(errorHandler())
+    .use(createHelmet())
+    .use(createBodyParser())
+    .use(createErrorHandler())
     .use(router.routes())
     .use(router.allowedMethods());
 
