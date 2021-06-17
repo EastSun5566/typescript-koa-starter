@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Server } from 'http';
 
 // eslint-disable-next-line import/prefer-default-export
