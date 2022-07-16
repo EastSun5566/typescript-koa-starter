@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { Server } from 'http';
-import Koa from 'koa';
+import App from 'koa';
 import Router, { IRouterOptions as RouterOptions } from 'koa-router';
 import createHelmet from 'koa-helmet';
 import createBodyParser from 'koa-bodyparser';
@@ -18,7 +18,7 @@ export const createServer = (options: ServerOptions = {}): Server => {
   const { route: routeOptions } = options;
   const router = createRouter(new Router(routeOptions));
 
-  const app = new Koa()
+  const app = new App()
     .use(createHelmet())
     .use(createBodyParser())
     .use(createErrorHandler())

@@ -1,11 +1,11 @@
 # base stage
 FROM node:12-slim as base
 
-ENV TINI_VERSION v0.18.0
+ENV TINI_VERSION=v0.18.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
-EXPOSE 8000
+EXPOSE 8080
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
