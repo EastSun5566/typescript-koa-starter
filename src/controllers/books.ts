@@ -3,7 +3,7 @@ import { IMiddleware } from 'koa-router';
 import { IBookService } from '../services';
 
 interface GetBookDTO {
-  id: number
+  id?: number
 }
 
 interface CreateBookDTO {
