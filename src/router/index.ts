@@ -1,20 +1,12 @@
 import Router from 'koa-router';
 
 import {
-  HomeController,
-  BookController,
+  homeController,
+  bookController,
 } from '../controllers';
-import {
-  HomeService,
-  BookService,
-} from '../services';
-import { BookModel } from '../models';
 import { registerRoute, Route } from './utils';
 
 export const createRouter = (router: Router): Router => {
-  const homeController = new HomeController(new HomeService());
-  const bookController = new BookController(new BookService({ Book: BookModel }));
-
   const routes: Route[] = [
     {
       path: '/',

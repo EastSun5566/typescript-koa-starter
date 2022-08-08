@@ -1,9 +1,9 @@
-import { Book, BookModel } from '../models';
+import { BookEntity, BookModel } from '../models';
 
 export interface IBookService {
-  find(): Promise<Book[]>;
-  findByID(id: Book['id']): Promise<Book>;
-  create(id: Book): Promise<Book>;
+  find(): Promise<BookEntity[]>;
+  findByID(id: BookEntity['id']): Promise<BookEntity>;
+  create(id: Omit<BookEntity, 'id'>): Promise<BookEntity>;
 }
 
 export class BookService implements IBookService {
@@ -12,15 +12,15 @@ export class BookService implements IBookService {
     private models: { Book: typeof BookModel },
   ) {}
 
-  find(): Promise<Book[]> {
+  find(): Promise<BookEntity[]> {
     return this.models.Book.find();
   }
 
-  findByID(id: Book['id']): Promise<Book> {
+  findByID(id: BookEntity['id']): Promise<BookEntity> {
     return this.models.Book.findByID(id);
   }
 
-  create(book: Book): Promise<Book> {
+  create(book: BookEntity): Promise<BookEntity> {
     return this.models.Book.create(book);
   }
 }

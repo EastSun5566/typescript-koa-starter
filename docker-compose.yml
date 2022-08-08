@@ -5,7 +5,5 @@ services:
     build:
       context: .
       target: dev
-    volumes:
-      - .:/app:delegated
     ports:
       - 8080:8080
