@@ -16,9 +16,17 @@ npm run start:dev
 # start prod
 npm start
 
+# start test
+npm test
+```
+
+```sh
 # start dev with docker
-npm run start:docker:dev
+docker-compose up
 
 # start prod with docker
-npm run start:docker
+docker-compose -f docker-compose.prod.yml up -d
+
+# start test with docker
+docker-compose run server npm test
 ```
