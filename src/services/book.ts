@@ -15,7 +15,7 @@ export class BookService {
     return this.bookRepos.findByID(id);
   }
 
-  create(book: BookEntity): Promise<BookEntity> {
+  create(book: Omit<BookEntity, 'id'>): Promise<BookEntity> {
     return this.bookRepos.create(book);
   }
 }
