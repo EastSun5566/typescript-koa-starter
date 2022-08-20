@@ -1,27 +1,22 @@
-import { BookEntity, BookModel } from '../models';
+import type { BookEntity } from '../entities';
+import { BookRepo } from '../repos';
 
-export interface IBookService {
-  find(): Promise<BookEntity[]>;
-  findByID(id: BookEntity['id']): Promise<BookEntity>;
-  create(id: Omit<BookEntity, 'id'>): Promise<BookEntity>;
-}
-
-export class BookService implements IBookService {
+export class BookService {
   // eslint-disable-next-line no-useless-constructor
   constructor(
-    private models: { Book: typeof BookModel },
+    private bookRepos: InstanceType<typeof BookRepo>,
   ) {}
 
   find(): Promise<BookEntity[]> {
-    return this.models.Book.find();
+    return this.bookRepos.find();
   }
 
   findByID(id: BookEntity['id']): Promise<BookEntity> {
-    return this.models.Book.findByID(id);
+    return this.bookRepos.findByID(id);
   }
 
   create(book: BookEntity): Promise<BookEntity> {
-    return this.models.Book.create(book);
+    return this.bookRepos.create(book);
   }
 }
 

@@ -1,8 +1,4 @@
-export interface IHomeService {
-  greet(): string;
-}
-
-export class HomeService implements IHomeService {
+export class HomeService {
   // eslint-disable-next-line class-methods-use-this
   greet(): string {
     return 'Hello World';

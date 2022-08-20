@@ -1,6 +1,6 @@
 import { IMiddleware } from 'koa-router';
 
-import { IBookService } from '../services';
+import { BookService } from '../services';
 
 interface GetBookDTO {
   id?: number
@@ -19,7 +19,7 @@ interface IBookController {
 export class BookController implements IBookController {
   // eslint-disable-next-line no-useless-constructor
   constructor(
-    private readonly bookService: IBookService,
+    private readonly bookService: InstanceType<typeof BookService>,
   ) {}
 
   list: IMiddleware = async (ctx): Promise<void> => {

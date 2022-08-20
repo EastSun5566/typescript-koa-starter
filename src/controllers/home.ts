@@ -1,15 +1,11 @@
 import { IMiddleware } from 'koa-router';
 
-import { IHomeService } from '../services/home';
+import { HomeService } from '../services';
 
-interface IHomeController {
-  get: IMiddleware;
-}
-
-export class HomeController implements IHomeController {
+export class HomeController {
   // eslint-disable-next-line no-useless-constructor
   constructor(
-    private readonly homeService: IHomeService,
+    private readonly homeService: InstanceType<typeof HomeService>,
   ) {}
 
   get: IMiddleware = (ctx): void => {
