@@ -4,6 +4,7 @@ import App from 'koa';
 import Router, { IRouterOptions as RouterOptions } from 'koa-router';
 import createHelmet from 'koa-helmet';
 import createBodyParser from 'koa-bodyparser';
+import createLogger from 'koa-logger';
 
 import { createRouter } from './router';
 import { createErrorHandler } from './middlewares';
@@ -19,6 +20,7 @@ export const createServer = (options: ServerOptions = {}): Server => {
   const router = createRouter(new Router(routeOptions));
 
   const app = new App()
+    .use(createLogger())
     .use(createHelmet())
     .use(createBodyParser())
     .use(createErrorHandler())
