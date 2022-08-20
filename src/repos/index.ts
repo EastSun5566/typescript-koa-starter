@@ -1,5 +1,5 @@
-import { BookRepo } from './book-repo';
+import { BookRepo } from './book';
 
-export * from './book-repo';
+export * from './book';
 
 export const bookRepo = new BookRepo();
