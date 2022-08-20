@@ -1,12 +1,11 @@
 import { HomeController } from '../home';
-import { IHomeService } from '../../services';
 
 describe('HomeController', () => {
   const GREETING = 'Hello';
   let homeController: HomeController;
 
   beforeEach(() => {
-    class MockHomeService implements IHomeService {
+    class MockHomeService {
       greet = (): string => GREETING
     }
 
