@@ -4,7 +4,7 @@ import type { BookEntity } from '../entities';
 export class BookRepo {
   // eslint-disable-next-line no-useless-constructor
   constructor(
-    protected UserModel?: any,
+    protected UserModel?: unknown,
   ) {}
 
   async find(): Promise<BookEntity[]> {
