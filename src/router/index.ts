@@ -11,22 +11,22 @@ export const createRouter = (router: Router): Router => {
     {
       path: '/',
       method: 'get',
-      handler: homeController.get,
+      handler: homeController.index,
     },
     {
       path: '/books',
       method: 'get',
-      handler: bookController.list,
+      handler: bookController.index,
       children: [
         {
           path: '/:id',
           method: 'get',
-          handler: bookController.get,
+          handler: bookController.show,
         },
         {
           path: '/',
           method: 'post',
-          handler: bookController.create,
+          handler: bookController.store,
         },
       ],
     },

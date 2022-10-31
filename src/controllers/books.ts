@@ -11,9 +11,9 @@ interface CreateBookDTO {
 }
 
 interface IBookController {
-  list: IMiddleware;
-  get: IMiddleware;
-  create: IMiddleware;
+  index: IMiddleware;
+  show: IMiddleware;
+  store: IMiddleware;
 }
 
 export class BookController implements IBookController {
@@ -22,18 +22,18 @@ export class BookController implements IBookController {
     private readonly bookService: InstanceType<typeof BookService>,
   ) {}
 
-  list: IMiddleware = async (ctx): Promise<void> => {
+  index: IMiddleware = async (ctx): Promise<void> => {
     ctx.body = await this.bookService.find();
   }
 
-  get: IMiddleware = async (ctx): Promise<void> => {
+  show: IMiddleware = async (ctx): Promise<void> => {
     const { params }: { params: GetBookDTO } = ctx;
     if (!params.id) throw new Error();
 
     ctx.body = await this.bookService.findByID(params.id);
   }
 
-  create: IMiddleware = async (ctx): Promise<void> => {
+  store: IMiddleware = async (ctx): Promise<void> => {
     const { body }: { body?: CreateBookDTO } = ctx.request;
     if (!body) throw new Error();
 

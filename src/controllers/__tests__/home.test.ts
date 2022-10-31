@@ -16,7 +16,7 @@ describe('HomeController', () => {
     const mockCtx = {} as any;
     const mockNest = jest.fn();
 
-    homeController.get(mockCtx, mockNest);
+    homeController.index(mockCtx, mockNest);
 
     expect(mockCtx).toHaveProperty('body', GREETING);
   });

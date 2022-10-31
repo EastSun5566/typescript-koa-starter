@@ -8,7 +8,7 @@ export class HomeController {
     private readonly homeService: InstanceType<typeof HomeService>,
   ) {}
 
-  get: IMiddleware = (ctx): void => {
+  index: IMiddleware = (ctx): void => {
     ctx.body = this.homeService.greet();
   }
 }
