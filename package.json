@@ -4,7 +4,7 @@
   "description": "✨ A starter for my TypeScript Koa project",
   "scripts": {
     "start:dev": "nodemon -e ts -x ts-node src",
-    "start": "node dist",
+    "start": "npm run build && node dist",
     "build": "tsc",
     "test": "jest",
     "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts src"

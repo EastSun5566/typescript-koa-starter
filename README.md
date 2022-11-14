@@ -4,10 +4,10 @@
 
 > ✨ A starter for my TypeScript Koa project
 
-## Getting started
+## Getting Started
 
 ```sh
-# install dep
+# install deps
 npm i
 
 # start dev
