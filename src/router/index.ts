@@ -11,27 +11,26 @@ export const createRouter = (router: Router): Router => {
     {
       path: '/',
       method: 'get',
-      handler: homeController.index,
+      handler: (...params) => homeController.index(...params),
     },
     {
       path: '/books',
       method: 'get',
-      handler: bookController.index,
+      handler: (...params) => bookController.index(...params),
       children: [
         {
           path: '/:id',
           method: 'get',
-          handler: bookController.show,
+          handler: (...params) => bookController.show(...params),
         },
         {
           path: '/',
           method: 'post',
-          handler: bookController.store,
+          handler: (...params) => bookController.store(...params),
         },
       ],
     },
   ];
-
   routes.forEach((route) => registerRoute({ router, route }));
 
   return router;
